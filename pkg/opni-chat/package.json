@@ -1,0 +1,19 @@
+{
+  "name": "opni-chat",
+  "version": "0.1.0",
+  "description": "Best chat ever",
+  "private": false,
+  "rancher": true,
+  "engines": {
+    "node": ">=12"
+  },
+  "resolutions": {
+    "**/webpack": "4",
+    "@types/node": "^16"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=dev ./node_modules/.bin/vue-cli-service serve",
+    "build": "./node_modules/.bin/vue-cli-service build",
+    "clean": "./node_modules/@rancher/shell/scripts/clean"
+  }
+}
