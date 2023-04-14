@@ -1,0 +1,10 @@
+{
+  "extensions": {
+    "opni-chat": {
+      "repo": "codysuse/opni-chat",
+      "versions": [
+        "0.1.0"
+      ]
+    }
+  }
+}

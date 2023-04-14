@@ -20,7 +20,10 @@
   "scripts": {
     "dev": "NODE_ENV=dev ./node_modules/.bin/vue-cli-service serve",
     "build": "./node_modules/.bin/vue-cli-service build",
-    "clean": "./node_modules/@rancher/shell/scripts/clean"
+    "clean": "./node_modules/@rancher/shell/scripts/clean",
+    "publish": "./node_modules/@rancher/shell/scripts/extension/publish",
+    "publish-pkgs": "./node_modules/@rancher/shell/scripts/publish-pkg.sh",
+    "build-pkg":    "./node_modules/@rancher/shell/scripts/build-pkg.sh"
   },
   "devDependencies": {
     "lorem-ipsum": "^2.0.8"

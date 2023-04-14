@@ -1,8 +1,8 @@
 Arguments: 
-  /home/sxenog/.nvm/versions/node/v16.14.2/bin/node /home/sxenog/.nvm/versions/node/v16.14.2/bin/yarn add core-js/modules/es.function.name.js
+  /home/sxenog/.nvm/versions/node/v16.14.2/bin/node /home/sxenog/.nvm/versions/node/v16.14.2/bin/yarn publish -c
 
 PATH: 
-  /home/sxenog/rancher/bin:/home/sxenog/.nvm/versions/node/v16.14.2/bin:/home/sxenog/.vscode-server/bin/92da9481c0904c6adfe372c12da3b7748d74bdcb/bin/remote-cli:/home/sxenog/rancher/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/usr/local/go/bin
+  /home/sxenog/rancher/bin:/home/sxenog/.nvm/versions/node/v16.14.2/bin:/home/sxenog/.vscode-server/bin/b7886d7461186a5eac768481578c1d7ca80e2d21/bin/remote-cli:/home/sxenog/rancher/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/usr/local/go/bin
 
 Yarn version: 
   1.22.19
@@ -14,8 +14,8 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/core-js%2fmodules/es.function.name.js: Request "https://registry.yarnpkg.com/core-js%2fmodules/es.function.name.js" returned a 405
-      at Request.params.callback [as _callback] (/home/sxenog/.nvm/versions/node/v16.14.2/lib/node_modules/yarn/lib/cli.js:66154:18)
+  Error: https://registry.yarnpkg.com/-/user/org.couchdb.user:admin: failed to authenticate: Could not authenticate admin: bad password
+      at Request.params.callback [as _callback] (/home/sxenog/.nvm/versions/node/v16.14.2/lib/node_modules/yarn/lib/cli.js:66145:18)
       at Request.self.callback (/home/sxenog/.nvm/versions/node/v16.14.2/lib/node_modules/yarn/lib/cli.js:140890:22)
       at Request.emit (node:events:526:28)
       at Request.<anonymous> (/home/sxenog/.nvm/versions/node/v16.14.2/lib/node_modules/yarn/lib/cli.js:141862:10)
@@ -35,7 +35,12 @@ npm manifest:
       "node": ">=12"
     },
     "dependencies": {
-      "@rancher/shell": "^0.0.0"
+      "@rancher/shell": "^0.0.0",
+      "core-js": "3.21.1",
+      "css-loader": "4.3.0",
+      "js-yaml": "4.1.0",
+      "marked": "^4.3.0",
+      "vue-fragment": "^1.6.0"
     },
     "resolutions": {
       "**/webpack": "4",
@@ -44,7 +49,11 @@ npm manifest:
     "scripts": {
       "dev": "NODE_ENV=dev ./node_modules/.bin/vue-cli-service serve",
       "build": "./node_modules/.bin/vue-cli-service build",
-      "clean": "./node_modules/@rancher/shell/scripts/clean"
+      "clean": "./node_modules/@rancher/shell/scripts/clean",
+      "publish": "./node_modules/@rancher/shell/scripts/extension/publish"
+    },
+    "devDependencies": {
+      "lorem-ipsum": "^2.0.8"
     }
   }
 
@@ -2957,9 +2966,9 @@ Lockfile:
     integrity sha512-1oO6+dN5kdIA3sKPZhRGJTfGVP4SWV6KqlMOwry4J3HfyD68sl/3KmG7DeYUzvN+RbhXDnv/D8vNNB8168tAMg==
   
   "@rancher/shell@^0.0.0":
-    version "0.3.4"
-    resolved "https://registry.yarnpkg.com/@rancher/shell/-/shell-0.3.4.tgz#ba8c371ed892e7ffc82034baf516957713090789"
-    integrity sha512-CKMbF9zLlkSmmqR6wcBXJqEGuymY0iVO6NVOT+BmSCq15AYNHU/URWO2yG9cP0MyUKkO5C5nyod0BR+MTaEtZA==
+    version "0.3.5"
+    resolved "https://registry.yarnpkg.com/@rancher/shell/-/shell-0.3.5.tgz#c4fd58dcb0a376f89a8af39a5c0e34e0b4fa51b8"
+    integrity sha512-heU7vZtK5T3lHZj3qmax9qPOugpkEMrGE/S/wcpts5wduKABpXxPMrOQf7RNOUfSaFrR4j0eQBzw2TIYk83H2Q==
     dependencies:
       "@aws-sdk/client-ec2" "3.1.0"
       "@aws-sdk/client-eks" "3.1.0"
@@ -5750,6 +5759,11 @@ Lockfile:
     version "5.1.0"
     resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
     integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
+  
+  commander@^9.3.0:
+    version "9.5.0"
+    resolved "https://registry.yarnpkg.com/commander/-/commander-9.5.0.tgz#bc08d1eb5cedf7ccb797a96199d41c7bc3e60d30"
+    integrity sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==
   
   commander@~2.19.0:
     version "2.19.0"
@@ -11602,6 +11616,13 @@ Lockfile:
     dependencies:
       "@sinonjs/commons" "^1.7.0"
   
+  lorem-ipsum@^2.0.8:
+    version "2.0.8"
+    resolved "https://registry.yarnpkg.com/lorem-ipsum/-/lorem-ipsum-2.0.8.tgz#f969a089f2ac6f19cf01b854b61beabb0e6f3cbc"
+    integrity sha512-5RIwHuCb979RASgCJH0VKERn9cQo/+NcAi2BMe9ddj+gp7hujl6BI+qdOG4nVsLDpwWEJwTVYXNKP6BGgbcoGA==
+    dependencies:
+      commander "^9.3.0"
+  
   lower-case@^1.1.1:
     version "1.1.4"
     resolved "https://registry.yarnpkg.com/lower-case/-/lower-case-1.1.4.tgz#9a2cabd1b9e8e0ae993a4bf7d5875c39c42e8eac"
@@ -11719,6 +11740,11 @@ Lockfile:
     version "4.0.17"
     resolved "https://registry.yarnpkg.com/marked/-/marked-4.0.17.tgz#1186193d85bb7882159cdcfc57d1dfccaffb3fe9"
     integrity sha512-Wfk0ATOK5iPxM4ptrORkFemqroz0ZDxp5MWfYA7H/F+wO17NRWV5Ypxi6p3g2Xmw2bKeiYOl6oVnLHKxBA0VhA==
+  
+  marked@^4.3.0:
+    version "4.3.0"
+    resolved "https://registry.yarnpkg.com/marked/-/marked-4.3.0.tgz#796362821b019f734054582038b116481b456cf3"
+    integrity sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==
   
   md5.js@^1.3.4:
     version "1.3.5"
@@ -16604,6 +16630,11 @@ Lockfile:
       esquery "^1.4.0"
       lodash "^4.17.21"
       semver "^6.3.0"
+  
+  vue-fragment@^1.6.0:
+    version "1.6.0"
+    resolved "https://registry.yarnpkg.com/vue-fragment/-/vue-fragment-1.6.0.tgz#2ac0ff656b74fa87d049a003b5dcd5befe9185cc"
+    integrity sha512-a5T8ZZZK/EQzgVShEl374HbobUJ0a7v12BzOzS6Z/wd/5EE/5SffcyHC+7bf9hP3L7Yc0hhY/GhMdwFQ25O/8A==
   
   vue-hot-reload-api@^2.3.0:
     version "2.3.4"
