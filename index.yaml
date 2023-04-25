@@ -12,12 +12,12 @@ entries:
       catalog.cattle.io/ui-component: plugins
     apiVersion: v2
     appVersion: 0.1.0
-    created: "2023-04-25T05:32:22.812221185Z"
+    created: "2023-04-25T06:25:49.481764938Z"
     description: opni-chat plugin
-    digest: 8cfaa6493a3ea48876601f25517cbcccea548bfca88e51eabe95d3cde991e0e3
+    digest: c2601ca7ad1d7d1d96b586ea0c258277ab2b369a3c1829bac2f49b4fc4c9203d
     name: opni-chat
     type: application
     urls:
     - assets/opni-chat/opni-chat-0.1.0.tgz
     version: 0.1.0
-generated: "2023-04-25T05:32:22.810781789Z"
+generated: "2023-04-25T06:25:49.480678848Z"
