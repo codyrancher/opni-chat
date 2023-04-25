@@ -1,5 +1,4 @@
 import { LoremIpsum } from 'lorem-ipsum';
-import { delayRandom } from '../time';
 import axios from 'axios';
 
 const lorem = new LoremIpsum({
