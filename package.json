@@ -11,7 +11,8 @@
     "css-loader": "4.3.0",
     "js-yaml": "4.1.0",
     "marked": "^4.3.0",
-    "vue-fragment": "^1.6.0"
+    "vue-fragment": "^1.6.0",
+    "lorem-ipsum": "^2.0.8"
   },
   "resolutions": {
     "**/webpack": "4",
@@ -21,12 +22,8 @@
     "dev": "NODE_ENV=dev ./node_modules/.bin/vue-cli-service serve",
     "build": "./node_modules/.bin/vue-cli-service build",
     "clean": "./node_modules/@rancher/shell/scripts/clean",
-    "publish": "./node_modules/@rancher/shell/scripts/extension/publish",
-    "publish-pkgs": "./node_modules/@rancher/shell/scripts/publish-pkg.sh",
     "build-pkg": "./node_modules/@rancher/shell/scripts/build-pkg.sh",
-    "serve-pkgs": "./node_modules/@rancher/shell/scripts/serve-pkgs"
-  },
-  "devDependencies": {
-    "lorem-ipsum": "^2.0.8"
+    "serve-pkgs": "./node_modules/@rancher/shell/scripts/serve-pkgs",
+    "publish-pkgs": "./node_modules/@rancher/shell/scripts/extension/publish"
   }
 }
