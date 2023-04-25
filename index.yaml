@@ -1,0 +1,23 @@
+apiVersion: v1
+entries:
+  opni-chat:
+  - annotations:
+      catalog.cattle.io/certified: rancher
+      catalog.cattle.io/kube-version: '>= 1.16.0-0 < 1.25.0-0'
+      catalog.cattle.io/namespace: cattle-ui-plugin-system
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/permits-os: linux, windows
+      catalog.cattle.io/rancher-version: '>= 2.7.0-0 < 2.8.0-0'
+      catalog.cattle.io/scope: management
+      catalog.cattle.io/ui-component: plugins
+    apiVersion: v2
+    appVersion: 0.1.0
+    created: "2023-04-25T05:32:22.812221185Z"
+    description: opni-chat plugin
+    digest: 8cfaa6493a3ea48876601f25517cbcccea548bfca88e51eabe95d3cde991e0e3
+    name: opni-chat
+    type: application
+    urls:
+    - assets/opni-chat/opni-chat-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-04-25T05:32:22.810781789Z"
