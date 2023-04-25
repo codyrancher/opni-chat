@@ -2902,7 +2902,7 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.4.4.tgz#11d5db19bd178936ec89cd84519c4de439574398"
   integrity sha512-1oO6+dN5kdIA3sKPZhRGJTfGVP4SWV6KqlMOwry4J3HfyD68sl/3KmG7DeYUzvN+RbhXDnv/D8vNNB8168tAMg==
 
-"@rancher/shell@^0.0.0":
+"@rancher/shell@^0.3.5":
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/@rancher/shell/-/shell-0.3.5.tgz#c4fd58dcb0a376f89a8af39a5c0e34e0b4fa51b8"
   integrity sha512-heU7vZtK5T3lHZj3qmax9qPOugpkEMrGE/S/wcpts5wduKABpXxPMrOQf7RNOUfSaFrR4j0eQBzw2TIYk83H2Q==

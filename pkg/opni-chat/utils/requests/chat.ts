@@ -1,5 +1,6 @@
 import { LoremIpsum } from 'lorem-ipsum';
 import { delayRandom } from '../time';
+import axios from 'axios';
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -12,8 +13,16 @@ const lorem = new LoremIpsum({
   }
 });
 
-export async function sendMessage(message: string): Promise<string> {
-  await delayRandom(750, 3500);
+const NAMESPACE = 'opni';
+const SERVICE_NAME = 'opni-chat';
+const PORT = '80';
+const PATH = '/';
 
-  return lorem.generateParagraphs(Math.floor((Math.random() * 2) + 1)).replace('\n', '\n\n');
+export async function sendMessage(message: string): Promise<string> {
+  try {
+    return (await axios.post<string>(`/api/v1/namespaces/${NAMESPACE}/services/http:${SERVICE_NAME}:${PORT}/proxy${PATH}`, { message })).data;
+  } catch (ex) {
+    console.error(ex);
+    return lorem.generateParagraphs(Math.floor((Math.random() * 2) + 1)).replace('\n', '\n\n');
+  }
 }
