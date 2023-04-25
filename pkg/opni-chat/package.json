@@ -1,19 +1,24 @@
 {
   "name": "opni-chat",
+  "description": "opni-chat plugin",
   "version": "0.1.0",
-  "description": "Best chat ever",
   "private": false,
   "rancher": true,
+  "scripts": {
+    "dev": "./node_modules/.bin/nuxt dev",
+    "nuxt": "./node_modules/.bin/nuxt"
+  },
   "engines": {
     "node": ">=12"
   },
-  "resolutions": {
-    "**/webpack": "4",
-    "@types/node": "^16"
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-typescript": "^4.5.15"
   },
-  "scripts": {
-    "dev": "NODE_ENV=dev ./node_modules/.bin/vue-cli-service serve",
-    "build": "./node_modules/.bin/vue-cli-service build",
-    "clean": "./node_modules/@rancher/shell/scripts/clean"
-  }
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
