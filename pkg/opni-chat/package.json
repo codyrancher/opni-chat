@@ -1,5 +1,5 @@
 {
-  "name": "Opni Chat",
+  "name": "opni-chat",
   "description": "An AI Chat that helps answer questions about Rancher and Kubernetes",
   "version": "0.1.1",
   "private": false,
