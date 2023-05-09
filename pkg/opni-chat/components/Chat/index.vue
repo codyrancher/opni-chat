@@ -25,6 +25,8 @@ export default Vue.extend({
     async sendMessage(ev) {
       ev.preventDefault();
 
+      const history = this.history;
+
       this.messages.push({
         sender:   'You',
         message: this.message
@@ -34,7 +36,7 @@ export default Vue.extend({
       await this.$set(this, 'message', '');
       await this.$set(this, 'waiting', true);
 
-      const newMessage = await sendMessage(currentMessage);
+      const newMessage = await sendMessage(currentMessage, history);
 
       this.messages.push({
         sender:   'Assistant',
@@ -45,7 +47,16 @@ export default Vue.extend({
     marked
   },
 
-  computed: {},
+  computed: {
+    history() {
+      return this.messages.map((message) => {
+        return {
+          type:    message.sender === 'You' ? 'human' : 'ai',
+          content: message.message
+        };
+      });
+    }
+  },
 });
 </script>
 <template>

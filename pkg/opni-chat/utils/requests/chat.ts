@@ -12,16 +12,33 @@ const lorem = new LoremIpsum({
   }
 });
 
-const NAMESPACE = 'opni';
-const SERVICE_NAME = 'opni-chat';
-const PORT = '80';
-const PATH = '/';
+export interface Response {
+  response: string;
+}
 
-export async function sendMessage(message: string): Promise<string> {
+export interface History {
+  type: 'ai' | 'human';
+  content: string;
+}
+
+const NAMESPACE = 'default';
+const SERVICE_NAME = 'openai-microservice';
+const PORT = '8001';
+const PATH = '/generate_response';
+const CLUSTER_ID = 'c-rnv52';
+const HEADERS = { 'X-API-KEY': 'test_key' };
+
+export async function sendMessage(message: string, history: History[]): Promise<string> {
   try {
-    return (await axios.post<string>(`/api/v1/namespaces/${NAMESPACE}/services/http:${SERVICE_NAME}:${PORT}/proxy${PATH}`, { message })).data;
+    const payload = {
+      text:         message,
+      chat_history: history
+    };
+
+    return (await axios.post<Response>(`/k8s/clusters/${ CLUSTER_ID }/api/v1/namespaces/${ NAMESPACE }/services/http:${ SERVICE_NAME }:${ PORT }/proxy${ PATH }`, payload, { headers: HEADERS })).data.response;
   } catch (ex) {
     console.error(ex);
+
     return lorem.generateParagraphs(Math.floor((Math.random() * 2) + 1)).replace('\n', '\n\n');
   }
 }
