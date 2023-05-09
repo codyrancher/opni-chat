@@ -1,0 +1,23 @@
+apiVersion: v1
+entries:
+  opni-chat:
+  - annotations:
+      catalog.cattle.io/certified: rancher
+      catalog.cattle.io/kube-version: '>= 1.16.0-0 < 1.26.0-0'
+      catalog.cattle.io/namespace: cattle-ui-plugin-system
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/permits-os: linux, windows
+      catalog.cattle.io/rancher-version: '>= 2.7.0-0 < 2.8.0-0'
+      catalog.cattle.io/scope: management
+      catalog.cattle.io/ui-component: plugins
+    apiVersion: v2
+    appVersion: 0.1.1
+    created: "2023-05-09T20:04:43.181201182Z"
+    description: An AI Chat that helps answer questions about Rancher and Kubernetes
+    digest: 4ddff038f7ba44ff62025748a2421a18541168e22492e8c864b7e1b223cd5c0f
+    name: opni-chat
+    type: application
+    urls:
+    - assets/opni-chat/opni-chat-0.1.1.tgz
+    version: 0.1.1
+generated: "2023-05-09T20:04:43.179680149Z"
