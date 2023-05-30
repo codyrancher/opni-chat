@@ -12,12 +12,12 @@ entries:
       catalog.cattle.io/ui-component: plugins
     apiVersion: v2
     appVersion: 0.1.1
-    created: "2023-05-25T17:45:29.324911659Z"
+    created: "2023-05-30T15:20:02.917879964Z"
     description: An AI Chat that helps answer questions about Rancher and Kubernetes
-    digest: b6eede16456dea5efcde79bab47cc904e7d0ad0a2a49792de0077eab1d60860f
+    digest: e9b19d6622e5cf18d3b048ae9528554a53c1e8d451820d301e0f5f48b51bb8bd
     name: opni-chat
     type: application
     urls:
     - assets/opni-chat/opni-chat-0.1.1.tgz
     version: 0.1.1
-generated: "2023-05-25T17:45:29.323824261Z"
+generated: "2023-05-30T15:20:02.915236558Z"
