@@ -1,7 +1,7 @@
 {
   "name": "opni-chat",
   "description": "An AI Chat that helps answer questions about Rancher and Kubernetes",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "rancher": true,
   "scripts": {
