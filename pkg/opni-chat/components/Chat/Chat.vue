@@ -98,18 +98,14 @@ export default Vue.extend({
             />
           </div>
           <div v-else>
-            <i
-              class="icon icon-user icon-3x avatar"
-            />
+            <img :src="require('../../assets/icon-opni-chat.svg')" class="bot-icon" />
           </div>
         </div>
         <Message :message="m.message" :store="store" @shell-opened="$emit('shell-opened')" /> <!--eslint-disable-line vue/singleline-html-element-content-newline -->
       </div>
       <div v-if="waiting" class="message assistant">
         <div class="sender h-pad v-pad">
-          <i
-            class="icon icon-user icon-3x avatar"
-          />
+          <img :src="require('../../assets/icon-opni-chat.svg')" class="bot-icon" />
         </div>
         <div class="body">
           <div class="dots">
@@ -123,7 +119,7 @@ export default Vue.extend({
     <div class="user-input m-10">
       <TextAreaAutoGrow v-model="message" placeholder="Type your message here..." style="padding-top: 10px; min-height: 42px;" @keyup.enter.native="sendMessage" />
       <button class="btn bg-primary ml-10" @click="sendMessage">
-        Send
+        <svg class="send-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /></svg>
       </button>
     </div>
   </div>
@@ -134,6 +130,14 @@ export default Vue.extend({
     display: flex;
     flex-direction: column;
     height: 100%;
+
+    .send-icon {
+      height: 16px;
+
+      path {
+        fill: #FFF;
+      }
+    }
 
     .h-pad {
         $size: 18px;
@@ -165,16 +169,10 @@ export default Vue.extend({
 
         color: #000;
 
-        .user-image, .avatar {
+        .user-image, .bot-icon {
             $size: 36px;
             width: $size;
             height: $size;
-        }
-
-        .avatar {
-            margin-left: -2px;
-            margin-top: -2px;
-            margin-right: 2px;
         }
 
         .body {

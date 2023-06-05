@@ -19,7 +19,7 @@ export default function(plugin: IPlugin, context: any) {
     {},
     {
       tooltip:    'AI Chat',
-      icon:       'icon-user',
+      svg:       require('./assets/icon-opni-chat.svg'),
       invoke(opts: any, resources: any) {
         toggle?.();
       }
