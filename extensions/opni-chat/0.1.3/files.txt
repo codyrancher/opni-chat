@@ -1,0 +1,4 @@
+plugin/img/icon-opni-chat.e89c1df9.svg
+plugin/opni-chat-0.1.3.umd.min.js
+plugin/opni-chat-0.1.3.umd.min.js.map
+plugin/package.json
