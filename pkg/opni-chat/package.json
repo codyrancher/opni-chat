@@ -2,7 +2,7 @@
   "name": "opni-chat",
   "description": "An AI Assistant that helps gaining insights and asking questions about Rancher and Kubernetes",
   "icon": "https://raw.githubusercontent.com/codyrancher/ai-chat/main/pkg/opni-chat/assets/icon-opni-chat.svg",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "rancher": true,
   "scripts": {
