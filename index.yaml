@@ -20,7 +20,7 @@ entries:
     name: opni-chat
     type: application
     urls:
-    - opni-chat/opni-chat-0.1.4.tgz
+    - assets/opni-chat/opni-chat-0.1.4.tgz
     version: 0.1.4
   - annotations:
       catalog.cattle.io/certified: rancher
