@@ -13,4 +13,4 @@ description: An AI Assistant that helps gaining insights and asking questions ab
 name: opni-chat
 type: application
 version: 0.1.4
-icon: https://raw.githubusercontent.com/codyrancher/ai-chat/main/pkg/opni-chat/assets/icon-opni-chat.svg
+icon: https://raw.githubusercontent.com/codyrancher/opni-chat/main/pkg/opni-chat/assets/icon-opni-chat.svg
