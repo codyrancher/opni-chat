@@ -12,7 +12,19 @@ export default Vue.extend({
     store: {
       type:     Object,
       required: true
+    },
+
+    resources: {
+      type:    Array,
+      default: null
+    },
+    open: {
+      type:     Boolean,
+      required: true
     }
+  },
+
+  created() {
   },
 
   data() {
@@ -24,7 +36,8 @@ export default Vue.extend({
           message: `You can begin our conversation by entering and sending me messages below.`
         },
       ],
-      waiting: false
+      waiting:     false,
+      deployments: []
     };
   },
 
@@ -36,21 +49,37 @@ export default Vue.extend({
 
       this.messages.push({
         sender:   'You',
-        message: this.message
+        message: this.message,
       });
       const currentMessage = this.message;
 
       await this.$set(this, 'message', '');
-      await this.$set(this, 'waiting', true);
-      this.scroll();
+
+      await this.updateChat(currentMessage, history);
+    },
+
+    async updateChat(currentMessage, history, modifyResponse = r => r) {
+      await this.startWaiting();
 
       const newMessage = await sendMessage(currentMessage, history);
+      const pod = this?.resources?.[0];
+      const deployment = pod?.spec?.containers?.[0];
 
       this.messages.push({
         sender:   'Assistant',
-        message: newMessage
+        message:  modifyResponse(newMessage),
+        resource: deployment?.name
       });
-      await this.$set(this, 'waiting', false);
+      this.stopWaiting();
+    },
+
+    startWaiting() {
+      this.$set(this, 'waiting', true);
+      this.scroll();
+    },
+
+    stopWaiting() {
+      this.$set(this, 'waiting', false);
       this.scroll();
     },
 
@@ -60,6 +89,39 @@ export default Vue.extend({
 
         element.scrollTop = element.scrollHeight;
       });
+    },
+
+    onResourcesUpdate() {
+      if (this.resources?.length > 0) {
+        const pod = this.resources[0];
+        const deployment = pod.spec.containers[0];
+
+        const currentMessage = {
+          sender:    'You',
+          message:  `Can you give me some insights about [${ pod.nameDisplay }](#)?`,
+        };
+
+        this.$set(this, 'messages', [currentMessage]);
+        this.updateChat(currentMessage.message, [], (response) => {
+          response = response
+            .replaceAll('{{pod}}', `[${ pod.nameDisplay }](#)`)
+            .replaceAll('{{deployment}}', `[${ deployment.name }](#)`);
+
+          return response;
+        });
+      }
+    }
+  },
+
+  watch: {
+    resources() {
+      this.onResourcesUpdate();
+    },
+
+    open() {
+      if (this.open) {
+        this.store.dispatch('cluster/findAll', { type: 'apps.deployment' });
+      }
     }
   },
 
@@ -101,7 +163,7 @@ export default Vue.extend({
             <img :src="require('../../assets/icon-opni-chat.svg')" class="bot-icon" />
           </div>
         </div>
-        <Message :message="m.message" :store="store" @shell-opened="$emit('shell-opened')" /> <!--eslint-disable-line vue/singleline-html-element-content-newline -->
+        <Message :message="m.message" :resource="m.resource" :store="store" @shell-opened="$emit('shell-opened')" /> <!--eslint-disable-line vue/singleline-html-element-content-newline -->
       </div>
       <div v-if="waiting" class="message assistant">
         <div class="sender h-pad v-pad">
@@ -126,6 +188,16 @@ export default Vue.extend({
 </template>
 
 <style lang="scss">
+.theme-dark {
+  .chat {
+    .message {
+      a {
+          color: #FFF;
+      }
+    }
+  }
+}
+
 .chat {
     display: flex;
     flex-direction: column;
@@ -194,10 +266,6 @@ export default Vue.extend({
             color: #FFF;
             background-color: rgba(20, 20, 25, 0.9);
           }
-        }
-
-        a {
-          color: #FFF;
         }
 
         &.user {

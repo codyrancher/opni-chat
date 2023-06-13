@@ -27,6 +27,7 @@ const PORT = '8001';
 const PATH = '/generate_response';
 const CLUSTER_ID = 'c-rnv52';
 const HEADERS = { 'X-API-KEY': 'test_key' };
+const NEW_HEADERS = { 'X-API-KEY': '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' };
 
 export async function sendMessage(message: string, history: History[]): Promise<string> {
   try {
@@ -35,7 +36,14 @@ export async function sendMessage(message: string, history: History[]): Promise<
       chat_history: history
     };
 
-    return (await axios.post<Response>(`/k8s/clusters/${ CLUSTER_ID }/api/v1/namespaces/${ NAMESPACE }/services/http:${ SERVICE_NAME }:${ PORT }/proxy${ PATH }`, payload, { headers: HEADERS })).data.response;
+    // const result = (await axios.post<Response>(`/k8s/clusters/${ CLUSTER_ID }/api/v1/namespaces/${ NAMESPACE }/services/http:${ SERVICE_NAME }:${ PORT }/proxy${ PATH }`, payload, { headers: HEADERS })).data.response;
+    const result = (await axios.post<Response>(`https://chatbot.opni.org/generate_response_new`, payload, { headers: NEW_HEADERS })).data.response;
+
+    if (message.includes('Can you give me some insights about')) {
+      return `It looks like pod {{pod}} has high CPU usage. The {{deployment}} deployment appears to be using the most CPU.\n\n![Chart](${ require('../../assets/chart.png') })\n\nWould you like to increase the scale of the deployment {{deployment}}? {{scale}}`;
+    }
+
+    return result;
   } catch (ex) {
     console.error(ex);
 

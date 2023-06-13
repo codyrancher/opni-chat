@@ -21,34 +21,37 @@ export default Vue.extend({
   },
 
   data() {
-    return { opened: false };
+    return { opened: false, resources: null };
   },
 
   computed: {},
 
   methods: {
-    toggle() {
+    toggle(resources = null) {
       this.opened = !this.opened;
+      this.resources = resources;
 
       if (this.opened) {
-        document.body.addEventListener('click', this.toggleIfClickedOutside, true); 
+        this.store.dispatch('cluster/findAll', { type: 'apps.deployment' })
+          .then(d => this.$set(this, 'deployments', d));
+        document.body.addEventListener('click', this.toggleIfClickedOutside, true);
       } else {
-        document.body.removeEventListener('click', this.toggleIfClickedOutside, true); 
+        document.body.removeEventListener('click', this.toggleIfClickedOutside, true);
       }
     },
 
     toggleIfClickedOutside(ev) {
-        if (!this.$refs.slideout.contains(ev.target)) {
-            this.toggle();
-        }
+      if (!this.$refs.slideout.contains(ev.target)) {
+        this.toggle();
+      }
     }
 
   }
 });
 </script>
 <template>
-  <div class="slideout" :class="{opened}" ref="slideout">
-    <Chat :store="store" @shell-opened="toggle" @click="(ev) => ev.preventDefault()" />
+  <div ref="slideout" class="slideout" :class="{opened}">
+    <Chat :store="store" :resources="resources" :open="opened" @shell-opened="toggle" @click="(ev) => ev.preventDefault()" />
   </div>
 </template>
 

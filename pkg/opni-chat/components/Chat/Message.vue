@@ -11,6 +11,10 @@ export default Vue.extend({
     store: {
       type:     Object,
       required: true
+    },
+    resource: {
+      type:    Object,
+      default: null
     }
   },
 
@@ -25,30 +29,14 @@ export default Vue.extend({
         result = result.replace(full, `\`kubectl ${ command }\``);
       });
 
-      return result.replaceAll('"', '**');
+      return result
+        .replaceAll('"', '**')
+        .replaceAll('{{scale}}', '**scale**');
     }
   },
 
   mounted() {
-    this.$nextTick(() => {
-      $('code').toArray()
-        .filter(code => code.textContent.startsWith('kubectl') && !code.textContent.includes('<') && $(code).children('.buttons-filler').length === 0)
-        .forEach((code) => {
-          const command = $(code).text();
-
-          const buttons = $('<div class="buttons"></div>')
-            .append(
-              $('<div class="icon-container hand"><i class="icon icon-terminal"></i><span class="tooltip">Execute</span></div>').on('click', () => {
-                this.runCommand(command);
-              }),
-              $('<div class="icon-container hand"><i class="icon icon-copy"></i><span class="tooltip">Copy</span></div>').on('click', () => {
-                navigator.clipboard.writeText(command);
-              })
-            );
-          
-          $(code).append('<div class="buttons-filler">&nbsp;</div>', buttons);
-        });
-    });
+    this.process();
   },
 
   methods: {
@@ -68,6 +56,82 @@ export default Vue.extend({
         }
       }, { root: true });
       this.$emit('shell-opened');
+    },
+
+    async updateDeploymentReplicas(id, count) {
+      const deployment = await this.getDeployment(id);
+
+      deployment.spec.replicas = count;
+      deployment.save();
+    },
+
+    async getDeployment(id) {
+      console.log(this.resource);
+      const deployments = await this.store.dispatch('cluster/findAll', { type: 'apps.deployment' });
+
+      return deployments.find(d => d.metadata.name === id);
+    },
+
+    process() {
+      if (!window.$) {
+        return;
+      }
+
+      this.$nextTick(() => {
+      // Kubectl commands
+        $('code').toArray()
+          .filter(code => code.textContent.startsWith('kubectl') && !code.textContent.includes('<') && $(code).children('.buttons-filler').length === 0)
+          .forEach((code) => {
+            const command = $(code).text();
+
+            const buttons = $('<div class="buttons"></div>')
+              .append(
+                $('<div class="icon-container hand"><i class="icon icon-terminal"></i><span class="tooltip">Execute</span></div>').on('click', () => {
+                  this.runCommand(command);
+                }),
+                $('<div class="icon-container hand"><i class="icon icon-copy"></i><span class="tooltip">Copy</span></div>').on('click', () => {
+                  navigator.clipboard.writeText(command);
+                })
+              );
+
+            $(code).append('<div class="buttons-filler">&nbsp;</div>', buttons);
+          });
+      });
+
+      // Scale buttons
+      $('strong').toArray()
+        .filter(s => s.textContent === 'scale')
+        .forEach((s) => {
+        // const deployment = this.resource;
+          const container = $(`<div class="plus-minus"></div>`);
+          const value = $(`<div class="value">1</div>`);
+          const minus = $(`<button type="button" class="btn btn-sm role-secondary"><i class="icon icon-sm icon-minus"></i></button>`)
+            .on('click', () => {
+              if (value.text() > 0) {
+                const newValue = value.text() - 1;
+
+                value.text(newValue);
+                this.updateDeploymentReplicas(this.resource, newValue);
+              }
+            });
+          const plus = $(`<button type="button" class="btn btn-sm role-secondary"><i class="icon icon-sm icon-plus"></i></button>`)
+            .on('click', () => {
+              const newValue = Number.parseInt(value.text()) + 1;
+
+              value.text(newValue);
+              this.updateDeploymentReplicas(this.resource, newValue);
+            });
+
+          container.append(minus, value, plus);
+
+          $(s).replaceWith(container);
+
+          if (this.resource) {
+            this.getDeployment(this.resource).then((d) => {
+              value.text(d.spec.replicas);
+            });
+          }
+        });
     }
   }
 });
@@ -78,6 +142,31 @@ export default Vue.extend({
 
 <style lang="scss">
 .message {
+  p {
+    &:not(:last-of-type) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .plus-minus {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 8px;
+
+    .value {
+      margin: 0 5px;
+    }
+  }
+
+  .body {
+    img {
+      max-width: 500px;
+      margin: 5px auto;
+      justify-self: center;
+      display: flex;
+    }
+  }
+
   code {
     margin-bottom: 2px;
     position: relative;

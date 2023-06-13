@@ -1,8 +1,9 @@
 import { importTypes } from '@rancher/auto-import';
-import { ActionLocation, IPlugin } from '@shell/core/types';
+import { ActionLocation, IPlugin, ActionOpts } from '@shell/core/types';
 import Vue from 'vue';
 import Chat from './components/Chat/index.vue';
 import Slideout from './components/Chat/Slideout.vue';
+import NewHome from './components/NewHome.vue';
 
 // Init the package
 export default function(plugin: IPlugin, context: any) {
@@ -18,13 +19,26 @@ export default function(plugin: IPlugin, context: any) {
     ActionLocation.HEADER,
     {},
     {
-      tooltip:    'AI Chat',
+      tooltip:    'AI Assistant',
       svg:       require('./assets/icon-opni-chat.svg'),
       invoke(opts: any, resources: any) {
         toggle?.();
       }
     }
   );
+
+  plugin.addAction(
+    ActionLocation.TABLE,
+    { resource: ['pod'] },
+    {
+      label:    'AI Insights',
+      svg:       require('./assets/icon-opni-chat.svg'),
+      invoke(opts: ActionOpts, resources: any[]) {
+        toggle?.(resources);
+      }
+    }
+  );
+
   if (!context.app.$config.isStandalone) {
     plugin.addRoute({
       name:      'ai-chat',
@@ -32,6 +46,12 @@ export default function(plugin: IPlugin, context: any) {
       component: Chat
     });
   }
+
+  plugin.addRoute({
+    name:      'home',
+    path:      '/home',
+    component: NewHome
+  });
 
   document.body.innerHTML += '<div id="ai-chat" />';
   new Vue({
