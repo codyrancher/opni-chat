@@ -20,6 +20,6 @@ entries:
     name: Rancher AI Assistant
     type: application
     urls:
-    - opni-chat/assets/rancher-ai-assistant-0.1.6.tgz
+    - assets/opni-chat/rancher-ai-assistant-0.1.6.tgz
     version: 0.1.6
 generated: "2023-06-14T21:01:25.76752336Z"
