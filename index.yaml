@@ -17,7 +17,7 @@ entries:
       Kubernetes
     digest: e7e511bd9bb9b940a57ad31ca29b94f8d9e38dbd6f418818308d58cf2fbb2083
     icon: https://raw.githubusercontent.com/codyrancher/opni-chat/main/pkg/opni-chat/assets/icon-opni-chat.svg
-    name: Rancher AI Assistant
+    name: opni-chat
     type: application
     urls:
     - assets/opni-chat/rancher-ai-assistant-0.1.6.tgz
