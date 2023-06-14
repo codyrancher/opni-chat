@@ -311,13 +311,44 @@ export default {
       <div class="row">
         <div class="col span-12">
           <Banner
-            color="success mt-0"
+            class="ai-banner"
+            color="info mt-0"
             :closable="true"
             @close="closeSetLoginBanner()"
           >
-            <div>
-              <h2>Opni AI Assistant Installed</h2>
-              <div>placeholder placeholder placeholder placeholder placeholder placeholder You can use the assistant to do stuff.</div>
+            <div class="contents">
+              <div class="icon-wrapper" />
+              <svg
+                id="Layer_1"
+                class="ai-icon"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 24 24"
+                style="enable-background:new 0 0 24 24;"
+                xml:space="preserve"
+              >
+                <g>
+                  <rect x="11" y="4" width="2" height="1" />
+                  <rect x="11" y="10" width="2" height="1" />
+                  <path
+                    d="M21,12V9c-3,0-6,1.1-8.4,3h-1.3C9,10.1,6,9,3,9v3c-0.6,0-1,0.4-1,1v2c0,0.6,0.4,1,1,1v4c3.3,0,6.6,1.3,9,3.5
+		c2.4-2.3,5.7-3.5,9-3.5v-4c0.6,0,1-0.4,1-1v-2C22,12.4,21.6,12,21,12z"
+                  />
+                  <circle cx="9" cy="4" r="1" />
+                  <circle cx="15" cy="4" r="1" />
+                  <path
+                    d="M8,8h3v1h2V8h3c1.7,0,3-1.3,3-3V3c0-1.7-1.3-3-3-3H8C6.3,0,5,1.3,5,3v2C5,6.7,6.3,8,8,8z M7,3c0-0.6,0.4-1,1-1h8
+		c0.6,0,1,0.4,1,1v2c0,0.6-0.4,1-1,1H8C7.4,6,7,5.6,7,5V3z"
+                  />
+                </g>
+              </svg>
+              <div>
+                <h2>Rancher AI Assistant Installed</h2>
+                <div>The Opni AI Assistant is installed and ready to help! Click on the AI icon at the top right of the page to access this feature.</div>
+              </div>
             </div>
           </Banner>
         </div>
@@ -477,7 +508,38 @@ export default {
   </div>
 </template>
 <style lang='scss' scoped>
-  .home-panels {
+.ai-banner {
+    position: relative;
+    .contents {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .icon-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 75px;
+
+        background-color: var(--info);
+    }
+    svg.ai-icon {
+        $size: 48px;
+        width: $size;
+        height: $size;
+        margin-right: 20px;
+
+        position: relative;
+        z-index: 2;
+
+        g > * {
+            fill: #FFF;
+        }
+    }
+}
+.home-panels {
     display: flex;
     align-items: stretch;
     .col {

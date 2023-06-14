@@ -110,6 +110,15 @@ export default Vue.extend({
           return response;
         });
       }
+    },
+
+    clearChat() {
+      this.$set(this, 'messages', [
+        {
+          sender:  'Assistant',
+          message: `You can begin our conversation by entering and sending me messages below.`
+        },
+      ]);
     }
   },
 
@@ -182,6 +191,9 @@ export default Vue.extend({
       <TextAreaAutoGrow v-model="message" placeholder="Type your message here..." style="padding-top: 10px; min-height: 42px;" @keyup.enter.native="sendMessage" />
       <button class="btn bg-primary ml-10" @click="sendMessage">
         <svg class="send-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /></svg>
+      </button>
+      <button class="btn role-secondary ml-10" @click="clearChat">
+        Clear
       </button>
     </div>
   </div>
@@ -263,8 +275,7 @@ export default Vue.extend({
 
           code {
             padding: 8px;
-            color: #FFF;
-            background-color: rgba(20, 20, 25, 0.9);
+            background-color: #f4f5fa;
           }
         }
 

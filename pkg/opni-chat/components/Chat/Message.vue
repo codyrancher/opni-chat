@@ -30,8 +30,10 @@ export default Vue.extend({
       });
 
       return result
+        .replaceAll('```', '`')
         .replaceAll('"', '**')
-        .replaceAll('{{scale}}', '**scale**');
+        .replaceAll('{{scale}}', '**scale**')
+        .replaceAll('{{alert}}', '**alert**');
     }
   },
 
@@ -66,7 +68,6 @@ export default Vue.extend({
     },
 
     async getDeployment(id) {
-      console.log(this.resource);
       const deployments = await this.store.dispatch('cluster/findAll', { type: 'apps.deployment' });
 
       return deployments.find(d => d.metadata.name === id);
@@ -80,7 +81,7 @@ export default Vue.extend({
       this.$nextTick(() => {
       // Kubectl commands
         $('code').toArray()
-          .filter(code => code.textContent.startsWith('kubectl') && !code.textContent.includes('<') && $(code).children('.buttons-filler').length === 0)
+          .filter(code => code.textContent.startsWith('kubectl') && code.textContent.length > 'kubectl'.length && !code.textContent.includes('<') && $(code).children('.buttons-filler').length === 0)
           .forEach((code) => {
             const command = $(code).text();
 
@@ -94,6 +95,7 @@ export default Vue.extend({
                 })
               );
 
+            $(code).addClass('with-buttons');
             $(code).append('<div class="buttons-filler">&nbsp;</div>', buttons);
           });
       });
@@ -132,6 +134,13 @@ export default Vue.extend({
             });
           }
         });
+
+      // Alert icon
+      $('strong').toArray()
+        .filter(s => s.textContent === 'alert')
+        .forEach((s) => {
+          $(s).replaceWith(`<div class="icon-spacer">&nbsp;<i class="conditions-alert-icon icon-warning icon text-error icon-2x" /><div>`);
+        });
     }
   }
 });
@@ -142,10 +151,24 @@ export default Vue.extend({
 
 <style lang="scss">
 .message {
+  .icon-spacer {
+    display: inline-block;
+    width: 28px;
+    position: relative;
+    margin-right: 4px;
+  }
+
   p {
+    line-height: 1.5;
     &:not(:last-of-type) {
       margin-bottom: 10px;
     }
+  }
+
+  .icon-warning {
+    position: absolute;
+    top: -6px;
+    left: 0;
   }
 
   .plus-minus {
@@ -162,8 +185,6 @@ export default Vue.extend({
     img {
       max-width: 500px;
       margin: 5px auto;
-      justify-self: center;
-      display: flex;
     }
   }
 

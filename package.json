@@ -1,12 +1,12 @@
 {
   "name": "opni-chat",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
   "engines": {
     "node": ">=12"
   },
   "dependencies": {
-    "@rancher/shell": "^0.3.12",
+    "@rancher/shell": "^0.3.14",
     "core-js": "3.21.1",
     "css-loader": "4.3.0",
     "js-yaml": "4.1.0",
