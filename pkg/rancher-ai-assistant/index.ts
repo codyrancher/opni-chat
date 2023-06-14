@@ -41,8 +41,8 @@ export default function(plugin: IPlugin, context: any) {
 
   if (!context.app.$config.isStandalone) {
     plugin.addRoute({
-      name:      'ai-chat',
-      path:      '/ai-chat',
+      name:      'rancher-ai-assistant',
+      path:      '/rancher-ai-assistant',
       component: Chat
     });
   }
@@ -53,9 +53,9 @@ export default function(plugin: IPlugin, context: any) {
     component: NewHome
   });
 
-  document.body.innerHTML += '<div id="ai-chat" />';
+  document.body.innerHTML += '<div id="rancher-ai-assistant" />';
   new Vue({
-    el:         '#ai-chat',
+    el:         '#rancher-ai-assistant',
     components: { Slideout },
     render(h) {
       return h('div', [h(Slideout, {
