@@ -20,6 +20,6 @@ entries:
     name: rancher-ai-assistant
     type: application
     urls:
-    - rancher-ai-assistant/rancher-ai-assistant-0.1.6.tgz
+    - assets/rancher-ai-assistant/rancher-ai-assistant-0.1.6.tgz
     version: 0.1.6
 generated: "2023-06-14T21:18:39.818711091Z"
