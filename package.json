@@ -1,6 +1,6 @@
 {
-  "name": "opni-chat",
-  "version": "0.1.5",
+  "name": "rancher-ai-assistant",
+  "version": "0.1.6",
   "private": false,
   "engines": {
     "node": ">=12"
