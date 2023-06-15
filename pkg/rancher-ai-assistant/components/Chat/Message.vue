@@ -165,6 +165,10 @@ export default Vue.extend({
     }
   }
 
+  li {
+    line-height: 1.5;
+  }
+
   .icon-warning {
     position: absolute;
     top: -6px;
@@ -191,6 +195,7 @@ export default Vue.extend({
   code {
     margin-bottom: 2px;
     position: relative;
+    line-height: 1;
 
     .buttons-filler {
       display: inline-block;
