@@ -13,4 +13,4 @@ description: An AI Assistant that helps with gaining insights about Rancher and 
 name: rancher-ai-assistant
 type: application
 version: 0.1.8
-icon: https://raw.githubusercontent.com/codyrancher/opni-chat/main/pkg/opni-chat/assets/icon-opni-chat.svg
+icon: https://raw.githubusercontent.com/codyrancher/opni-chat/main/pkg/rancher-ai-assistant/assets/icon-opni-chat.svg
