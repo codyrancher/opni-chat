@@ -3,6 +3,27 @@ entries:
   rancher-ai-assistant:
   - annotations:
       catalog.cattle.io/certified: rancher
+      catalog.cattle.io/kube-version: '>= 1.16.0-0 < 1.26.0-0'
+      catalog.cattle.io/namespace: cattle-ui-plugin-system
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/permits-os: linux, windows
+      catalog.cattle.io/rancher-version: '>= 2.7.0-0 < 2.8.0-0'
+      catalog.cattle.io/scope: management
+      catalog.cattle.io/ui-component: plugins
+    apiVersion: v2
+    appVersion: 0.1.10
+    created: "2023-06-15T21:19:43.331477888Z"
+    description: An AI Assistant that helps with gaining insights about Rancher and
+      Kubernetes
+    digest: 1ecd8eee994a0156d99bff428de71b52068a12d2c8a9e4d2c026f9dabb17e1d4
+    icon: https://raw.githubusercontent.com/codyrancher/opni-chat/main/pkg/rancher-ai-assistant/assets/icon-opni-chat.svg
+    name: rancher-ai-assistant
+    type: application
+    urls:
+    - rancher-ai-assistant/rancher-ai-assistant-0.1.10.tgz
+    version: 0.1.10
+  - annotations:
+      catalog.cattle.io/certified: rancher
       catalog.cattle.io/display-name: Rancher AI Assistant
       catalog.cattle.io/kube-version: '>= 1.16.0-0 < 1.26.0-0'
       catalog.cattle.io/namespace: cattle-ui-plugin-system
@@ -23,4 +44,4 @@ entries:
     urls:
     - assets/rancher-ai-assistant/rancher-ai-assistant-0.1.9.tgz
     version: 0.1.9
-generated: "2023-06-15T16:33:29.883582537Z"
+generated: "2023-06-15T21:19:43.330408824Z"
