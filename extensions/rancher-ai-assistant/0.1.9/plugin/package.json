@@ -4,7 +4,9 @@
   "icon": "https://raw.githubusercontent.com/codyrancher/opni-chat/main/pkg/rancher-ai-assistant/assets/icon-opni-chat.svg",
   "version": "0.1.9",
   "private": false,
-  "rancher": true,
+  "rancher": {
+    "catalog.cattle.io/display-name": "Rancher AI Assistant"
+  },
   "engines": {
     "node": ">=12"
   },
