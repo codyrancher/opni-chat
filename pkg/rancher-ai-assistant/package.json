@@ -2,9 +2,11 @@
   "name": "rancher-ai-assistant",
   "description": "An AI Assistant that helps with gaining insights about Rancher and Kubernetes",
   "icon": "https://raw.githubusercontent.com/codyrancher/opni-chat/main/pkg/opni-chat/assets/icon-opni-chat.svg",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": false,
-  "rancher": true,
+  "rancher": {
+    "catalog.cattle.io/display-name": "Rancher AI Assistant"
+  },
   "scripts": {
     "dev": "./node_modules/.bin/nuxt dev",
     "nuxt": "./node_modules/.bin/nuxt"
