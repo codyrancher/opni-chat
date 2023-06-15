@@ -12,7 +12,7 @@ entries:
       catalog.cattle.io/ui-component: plugins
     apiVersion: v2
     appVersion: 0.1.2
-    created: "2023-06-14T21:18:39.823648996Z"
+    created: "2023-06-15T06:38:02.59418047Z"
     description: An AI Chat that helps answer questions about Rancher and Kubernetes
     digest: 27b70e9aec75591650c9e84c8abf29976db4e306b21f433dabea30737dec4448
     name: opni-chat
@@ -31,7 +31,7 @@ entries:
       catalog.cattle.io/ui-component: plugins
     apiVersion: v2
     appVersion: 0.1.1
-    created: "2023-06-14T21:18:39.823306496Z"
+    created: "2023-06-15T06:38:02.593726771Z"
     description: An AI Chat that helps answer questions about Rancher and Kubernetes
     digest: e9b19d6622e5cf18d3b048ae9528554a53c1e8d451820d301e0f5f48b51bb8bd
     name: opni-chat
@@ -50,15 +50,15 @@ entries:
       catalog.cattle.io/scope: management
       catalog.cattle.io/ui-component: plugins
     apiVersion: v2
-    appVersion: 0.1.6
-    created: "2023-06-14T21:18:39.823895497Z"
+    appVersion: 0.1.8
+    created: "2023-06-15T06:38:02.59448627Z"
     description: An AI Assistant that helps with gaining insights about Rancher and
       Kubernetes
-    digest: 8f693970b14533e55003b6e59696bbe1737534d96f8eb784a738cb4d49775619
+    digest: 12aa3a354d7d9b08e6a98c789345914d6e6b8e586c8f165acff2cfa6c2089ee4
     icon: https://raw.githubusercontent.com/codyrancher/opni-chat/main/pkg/opni-chat/assets/icon-opni-chat.svg
     name: rancher-ai-assistant
     type: application
     urls:
-    - rancher-ai-assistant/rancher-ai-assistant-0.1.6.tgz
-    version: 0.1.6
-generated: "2023-06-14T21:18:39.818711091Z"
+    - rancher-ai-assistant/rancher-ai-assistant-0.1.8.tgz
+    version: 0.1.8
+generated: "2023-06-15T06:38:02.592417271Z"
