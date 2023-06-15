@@ -7,7 +7,8 @@
   "rancher": {
     "annotations": {
       "catalog.cattle.io/display-name": "Rancher AI Assistant"
-    }
+    },
+    "catalog.cattle.io/display-name": "Rancher AI Assistant"
   },
   "scripts": {
     "dev": "./node_modules/.bin/nuxt dev",
