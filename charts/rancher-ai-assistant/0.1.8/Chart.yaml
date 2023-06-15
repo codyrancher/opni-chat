@@ -7,6 +7,7 @@ annotations:
   catalog.cattle.io/rancher-version: '>= 2.7.0-0 < 2.8.0-0'
   catalog.cattle.io/scope: management
   catalog.cattle.io/ui-component: plugins
+  catalog.cattle.io/display-name: Rancher AI Assistant
 apiVersion: v2
 appVersion: "0.1.8"
 description: An AI Assistant that helps with gaining insights about Rancher and Kubernetes
