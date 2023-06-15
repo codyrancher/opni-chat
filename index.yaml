@@ -20,7 +20,7 @@ entries:
     name: rancher-ai-assistant
     type: application
     urls:
-    - rancher-ai-assistant/rancher-ai-assistant-0.1.10.tgz
+    - assets/rancher-ai-assistant/rancher-ai-assistant-0.1.10.tgz
     version: 0.1.10
   - annotations:
       catalog.cattle.io/certified: rancher
