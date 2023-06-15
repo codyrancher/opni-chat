@@ -347,7 +347,7 @@ export default {
               </svg>
               <div>
                 <h2>The Rancher AI Assistant is installed and ready to help</h2>
-                <div>You can open the assistant through the icon at the top right of each page. Insights for specific resources can be access via the kebab menu in lists.</div>
+                <div>You can open the assistant through the icon at the top right of each page. Insights for specific resources can be accessed via the kebab menu in lists.</div>
               </div>
             </div>
           </Banner>
