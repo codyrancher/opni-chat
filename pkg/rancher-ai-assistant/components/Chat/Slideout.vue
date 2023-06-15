@@ -57,7 +57,7 @@ export default Vue.extend({
 
 <style lang="scss">
 .slideout {
-    $width: 800px;
+    $width: 660px;
     $top: 55px;
 
     position: fixed;

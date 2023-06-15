@@ -4,12 +4,7 @@
   "icon": "https://raw.githubusercontent.com/codyrancher/opni-chat/main/pkg/rancher-ai-assistant/assets/icon-opni-chat.svg",
   "version": "0.1.9",
   "private": false,
-  "rancher": {
-    "annotations": {
-      "catalog.cattle.io/display-name": "Rancher AI Assistant"
-    },
-    "catalog.cattle.io/display-name": "Rancher AI Assistant"
-  },
+  "rancher": true,
   "scripts": {
     "dev": "./node_modules/.bin/nuxt dev",
     "nuxt": "./node_modules/.bin/nuxt"

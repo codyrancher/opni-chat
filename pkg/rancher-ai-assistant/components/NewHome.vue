@@ -346,8 +346,8 @@ export default {
                 </g>
               </svg>
               <div>
-                <h2>Rancher AI Assistant Installed</h2>
-                <div>The Opni AI Assistant is installed and ready to help! Click on the AI icon at the top right of the page to access this feature.</div>
+                <h2>The Rancher AI Assistant is installed and ready to help</h2>
+                <div>You can open the assistant through the icon at the top right of each page. Insights for specific resources can be access via the kebab menu in lists.</div>
               </div>
             </div>
           </Banner>
