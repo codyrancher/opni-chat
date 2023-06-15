@@ -17,7 +17,7 @@ entries:
     description: An AI Assistant that helps with gaining insights about Rancher and
       Kubernetes
     digest: 12aa3a354d7d9b08e6a98c789345914d6e6b8e586c8f165acff2cfa6c2089ee4
-    icon: https://raw.githubusercontent.com/codyrancher/opni-chat/main/pkg/opni-chat/assets/icon-opni-chat.svg
+    icon: https://raw.githubusercontent.com/codyrancher/opni-chat/main/pkg/rancher-ai-assistant/assets/icon-opni-chat.svg
     name: rancher-ai-assistant
     type: application
     urls:
