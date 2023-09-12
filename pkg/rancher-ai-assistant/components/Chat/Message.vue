@@ -190,6 +190,8 @@ export default Vue.extend({
       max-width: 500px;
       margin: 5px auto;
     }
+
+    color: var(--body-text);
   }
 
   code {

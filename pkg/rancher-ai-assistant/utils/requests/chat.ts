@@ -37,7 +37,7 @@ export async function sendMessage(message: string, history: History[]): Promise<
     };
 
     // const result = (await axios.post<Response>(`/k8s/clusters/${ CLUSTER_ID }/api/v1/namespaces/${ NAMESPACE }/services/http:${ SERVICE_NAME }:${ PORT }/proxy${ PATH }`, payload, { headers: HEADERS })).data.response;
-    const result = (await axios.post<Response>(`https://chatbot.opni.org/generate_response_new`, payload, { headers: NEW_HEADERS })).data.response;
+    const result = (await axios.post<Response>(`https://rancherai.chakrabamartya.xyz/generate_response_new`, payload, { headers: NEW_HEADERS })).data.response;
 
     if (message.includes('Can you give me some insights about')) {
       return `Here's my analysis of this pod:\n\n{{alert}}It looks like {{pod}} has high CPU usage. \n\n The {{deployment}} deployment appears to be using the most CPU.\n\n![Chart](${ require('../../assets/chart.png') })\n\nWould you like to increase the scale of the deployment {{deployment}}? {{scale}}`;
